@@ -5,12 +5,17 @@ class Carousel {
         this.rightClick = document.querySelector(".right-button");
         let currentIndex = 0;
         const images = document.querySelectorAll("div.carousel > img");
-        images[0].style.display ="flex";
-        images[1].style.display = "none";
-        images[2].style.display = "none";
-        images[3].style.display = "none";
+        this.initialize(images);
         this.leftClick.addEventListener("click", () => this.scrollLeft(currentIndex++,images));
         this.rightClick.addEventListener("click", () => this.scrollRight(currentIndex--,images));
+    }
+    initialize(images) {
+        function getRndInteger(min, max) {
+            return Math.floor(Math.random() * (max - min)) + min;
+        }
+        let index = getRndInteger(0,images.length-1);
+        console.log(index);
+        images[index].style.display = "flex";
     }
     scrollLeft(currentIndex,images) {
         images.forEach(function (currentValue,index){
