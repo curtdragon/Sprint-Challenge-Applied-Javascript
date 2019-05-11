@@ -3,20 +3,35 @@ class Carousel {
         this.carouselElement = carouselElement;
         this.leftClick = document.querySelector(".left-button");
         this.rightClick = document.querySelector(".right-button");
-        this.leftClick.addEventListener("click", () => this.scrollLeft());
-        this.rightClick.addEventListener("click", () => this.scrollRight());
+        let currentIndex = 0;
+        const images = document.querySelectorAll("div.carousel > img");
+        images[0].style.display ="flex";
+        images[1].style.display = "none";
+        images[2].style.display = "none";
+        images[3].style.display = "none";
+        this.leftClick.addEventListener("click", () => this.scrollLeft(currentIndex++,images));
+        this.rightClick.addEventListener("click", () => this.scrollRight(currentIndex--,images));
     }
-    scrollLeft() {
-        const images = document.querySelectorAll("img");
-        images.forEach(image => {
-            image.style.display = "flex";
-        })
-    }
-    scrollRight(){
-        const images = document.querySelectorAll("img");
-        images.forEach(image=>{
-            image.style.display = "flex";
-        })
+    scrollLeft(currentIndex,images) {
+        images.forEach(function (currentValue,index){
+            if (index == currentIndex) {
+                currentValue.style.display = "flex";
+            }
+            else{
+                currentValue.style.display = "none";
+            }            
+        });
+    } 
+    scrollRight(currentIndex, images) {
+        images.forEach(function callback(currentValue, index) {
+          if (index == currentIndex) {
+                currentValue.style.display = "flex";
+            }
+            else {
+                currentValue.style.display = "none";
+            }
+        });
+
     }
 }
 
