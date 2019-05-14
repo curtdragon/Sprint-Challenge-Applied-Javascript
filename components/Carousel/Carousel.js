@@ -30,8 +30,6 @@ class Carousel {
         images.forEach(function (currentValue,index){
             console.log(currentValue);
             if (index == currentIndex) {
-                // TweenMax.from(currentValue, 1, {x:300});
-                // console.group(currentValue);
                 currentValue.style.display = "flex";
             }
             else{
